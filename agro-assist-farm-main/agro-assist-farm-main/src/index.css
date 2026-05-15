@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Agriculture Green Theme */
+    --background: 120 20% 98%;
+    --foreground: 120 30% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 120 30% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 120 30% 15%;
+
+    /* Fresh Leaf Green */
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Earth Brown */
+    --secondary: 30 30% 90%;
+    --secondary-foreground: 30 40% 25%;
+
+    --muted: 120 15% 94%;
+    --muted-foreground: 120 10% 45%;
+
+    /* Golden Yellow Accent */
+    --accent: 45 93% 47%;
+    --accent-foreground: 45 90% 15%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 120 20% 85%;
+    --input: 120 20% 85%;
+    --ring: 142 76% 36%;
+
+    --radius: 0.75rem;
+
+    /* Custom Colors */
+    --soil-brown: 25 40% 35%;
+    --soil-brown-light: 25 30% 85%;
+    --crop-green: 100 60% 40%;
+    --sun-yellow: 45 100% 55%;
+    --sky-blue: 200 80% 55%;
+    --earth-tan: 35 40% 75%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(142, 76%, 36%) 0%, hsl(100, 60%, 40%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0, 0%, 100%) 0%, hsl(120, 20%, 96%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(45, 93%, 47%) 0%, hsl(35, 90%, 50%) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px -4px hsl(120 30% 15% / 0.1);
+    --shadow-card: 0 8px 30px -8px hsl(120 30% 15% / 0.15);
+    --shadow-glow: 0 0 30px hsl(142, 76%, 36%, 0.3);
+
+    --sidebar-background: 120 20% 97%;
+    --sidebar-foreground: 120 30% 15%;
+    --sidebar-primary: 142 76% 36%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 120 15% 92%;
+    --sidebar-accent-foreground: 120 30% 15%;
+    --sidebar-border: 120 20% 85%;
+    --sidebar-ring: 142 76% 36%;
+  }
+
+  .dark {
+    --background: 120 20% 8%;
+    --foreground: 120 10% 95%;
+
+    --card: 120 20% 12%;
+    --card-foreground: 120 10% 95%;
+
+    --popover: 120 20% 12%;
+    --popover-foreground: 120 10% 95%;
+
+    --primary: 142 70% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 30 20% 20%;
+    --secondary-foreground: 30 20% 90%;
+
+    --muted: 120 15% 18%;
+    --muted-foreground: 120 10% 60%;
+
+    --accent: 45 80% 50%;
+    --accent-foreground: 45 90% 10%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 120 15% 20%;
+    --input: 120 15% 20%;
+    --ring: 142 70% 45%;
+
+    --sidebar-background: 120 20% 10%;
+    --sidebar-foreground: 120 10% 95%;
+    --sidebar-primary: 142 70% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 120 15% 15%;
+    --sidebar-accent-foreground: 120 10% 95%;
+    --sidebar-border: 120 15% 20%;
+    --sidebar-ring: 142 70% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  .farmer-btn {
+    @apply px-6 py-4 text-lg font-semibold rounded-xl transition-all duration-200 
+           hover:scale-[1.02] active:scale-[0.98] shadow-soft;
+  }
+
+  .farmer-btn-primary {
+    @apply farmer-btn bg-primary text-primary-foreground hover:shadow-glow;
+  }
+
+  .farmer-btn-secondary {
+    @apply farmer-btn bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  .farmer-btn-accent {
+    @apply farmer-btn gradient-accent text-accent-foreground hover:brightness-105;
+  }
+
+  .farmer-card {
+    @apply bg-card rounded-2xl p-6 shadow-card border border-border/50 
+           transition-all duration-300 hover:shadow-lg;
+  }
+
+  .farmer-input {
+    @apply w-full px-4 py-4 text-lg rounded-xl border-2 border-input 
+           bg-background focus:border-primary focus:ring-2 focus:ring-primary/20 
+           transition-all duration-200 placeholder:text-muted-foreground;
+  }
+
+  .section-title {
+    @apply text-2xl md:text-3xl font-bold text-foreground;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-muted-foreground;
+  }
+}
